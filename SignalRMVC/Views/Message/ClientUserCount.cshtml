@@ -1,0 +1,44 @@
+﻿@{
+
+    Layout = null;
+}
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+<div class="content">
+    <div class="container-fluid">
+
+        <script type="text/javascript">
+            $(document).ready(() => {
+                var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7286/SignalRHub").build();
+
+                $("#connstatus").text(connection.state);
+
+                // 1. Önce sunucudan gelecek veriyi dinleyecek fonksiyonu tanımlıyoruz (Catch DIŞINDA)
+                connection.on("ReceiveCategoryCount", (value) => {
+                    $("#categorycount").text(value);
+                });
+
+                // 2. Bağlantıyı başlatıyoruz
+                connection.start().then(() => {
+                    $("#connstatus").text(connection.state); // "Connected" yazmalı
+                    serInterval(()=>{
+                        connection.invoke("SendStatistic");
+                    });
+                    }, 1000)
+                    // Bağlantı başarılı olur olmaz sunucudaki metoda istek atıyoruz
+                }).catch((err) => {});
+                    console.log(err);
+                    connection.on("ReceiveCategoryCount", (value) => {
+                    $("#categorycount").text(value);
+                });
+                 
+            });
+        </script>
+
+        <h4 class="page-title">Anlık Müşteri Sayfası</h4>
+       
+    </div>
+</div>

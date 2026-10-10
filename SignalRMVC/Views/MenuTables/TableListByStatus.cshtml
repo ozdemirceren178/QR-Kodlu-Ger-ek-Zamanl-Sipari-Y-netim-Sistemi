@@ -1,0 +1,90 @@
+﻿@model List<ResultMenuTableDto>
+@{
+    ViewData["Title"] = "TableListByStatus";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+<div class="content">
+    <div class="container-fluid">
+
+        <script type="text/javascript">
+            $(document).ready(() => {
+                var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7286/SignalRHub").build();
+
+                $("#connstatus").text(connection.state);
+
+                // 1. Dinleyiciyi bağlantıdan önce tanımlıyoruz
+                connection.on("ReceiveCategoryCount", (value) => {
+                    $("#categorycount").text(value);
+                });
+
+                // 2. Masa durumlarını dinleyen ve HTML oluşturan blok
+                connection.on("ReceiveMenuTableService", (value) => {
+                    console.log(value);
+                    let tablehtml = `<div class="row">`;
+
+                    // HATA DÜZELTİLDİ: Fazla parantez (index,item))=> kaldırıldı -> (index, item) => yapıldı
+                    $.each(value, (index, item) => {
+                        let color = "";
+                        let status = "";
+
+                        if (item.status == true) {
+                            color = "card card-status card-success";
+                            status = "Masa Dolu";
+                        } else {
+                            color = "card card-status card-danger";
+                            status = "Masa Boş";
+                        }
+
+                        tablehtml += `<div class="col-md-3">
+                            <div class="${color}">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-5">
+                                            <div class="icon-big text-center">
+                                                <i class="la la-users"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-7 d-flex align-items-center">
+                                            <div class="numbers">
+                                                <p class="card-category">${item.name}</p>
+                                                <h4 class="card-title">${status}</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+                    });
+
+                    tablehtml += `</div>`;
+                    $("#statuslist").html(tablehtml);
+                });
+
+                // 3. Bağlantıyı başlatıp periyodik istek atma (serInterval -> setInterval düzeltildi)
+                connection.start().then(() => {
+                    $("#connstatus").text(connection.state);
+
+                    setInterval(() => {
+                        connection.invoke("GetMenuTableStatus");
+                    }, 1000);
+
+                }).catch((err) => {
+                    console.log(err);
+                });
+            });
+        </script>
+
+        <h4 class="page-title">Anlık Masa Durumları Sayfası</h4>
+
+        <div id="statuslist">
+            <!-- SignalR üzerinden gelen dinamik kartlar buraya basılacak -->
+        </div>
+
+    </div>
+</div>
