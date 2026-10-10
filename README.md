@@ -58,15 +58,19 @@ Bu yapı, mesajların sayfa yenilemesi gerektirmeden istemci tarafında görünt
 
  
 **Ana Sayfa ve Menü**
+
 <img width="700" alt="image" src="https://github.com/user-attachments/assets/8a5362f2-8292-4f1c-b026-71932dc5e481" />
 
 **Sepet Yönetimi**
+
 <img width="700" alt="Ekran görüntüsü 2026-10-07 221203" src="https://github.com/user-attachments/assets/1bac70a7-78f4-4827-9484-6d7f1b52f403" />
 
 **İstatistikler**
+
 <img width="700"  alt="dashboard" src="https://github.com/user-attachments/assets/bade2a86-786a-4ae2-9fa2-3b562a281e79" />
 
 **Gerçek Zamanlı Mesajlaşma**
+
 <img width="700"  alt="anlık mesaj29" src="https://github.com/user-attachments/assets/0093770c-6867-4c7e-ae51-1b35a3dbda4b" />
 
 
