@@ -73,5 +73,7 @@ Bu yapı, mesajların sayfa yenilemesi gerektirmeden istemci tarafında görünt
 
 <img width="700"  alt="anlık mesaj29" src="https://github.com/user-attachments/assets/0093770c-6867-4c7e-ae51-1b35a3dbda4b" />
 
+**QR CODE**
+<img width="700" alt="qr" src="https://github.com/user-attachments/assets/9d75f2ea-a11e-421a-a343-9b72fd4f37c9" />
 
 
