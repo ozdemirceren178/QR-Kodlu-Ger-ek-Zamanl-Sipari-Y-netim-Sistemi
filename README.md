@@ -58,12 +58,10 @@ Bu yapı, mesajların sayfa yenilemesi gerektirmeden istemci tarafında görünt
 
  
 **Ana Sayfa ve Menü**
+<img width="700" alt="ana-sayfa(Leziz de eklendi)" src="https://github.com/user-attachments/assets/3ebee8e4-12ae-4b92-8fe7-f4ed739d62cf" />
 
 <img width="700" alt="image" src="https://github.com/user-attachments/assets/8a5362f2-8292-4f1c-b026-71932dc5e481" />
 
-**Sepet Yönetimi**
-
-<img width="700" alt="Ekran görüntüsü 2026-10-07 221203" src="https://github.com/user-attachments/assets/1bac70a7-78f4-4827-9484-6d7f1b52f403" />
 
 **İstatistikler**
 
