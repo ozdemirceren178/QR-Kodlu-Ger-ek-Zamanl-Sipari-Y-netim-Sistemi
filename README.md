@@ -58,6 +58,7 @@ Bu yapı, mesajların sayfa yenilemesi gerektirmeden istemci tarafında görünt
 
  
 **Ana Sayfa ve Menü**
+
 <img width="700" alt="ana-sayfa(Leziz de eklendi)" src="https://github.com/user-attachments/assets/3ebee8e4-12ae-4b92-8fe7-f4ed739d62cf" />
 
 <img width="700" alt="image" src="https://github.com/user-attachments/assets/8a5362f2-8292-4f1c-b026-71932dc5e481" />
